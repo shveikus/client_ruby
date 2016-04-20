@@ -38,6 +38,7 @@ describe BeGateway::Client do
           'brand' => 'visa',
           'last_4' => '0000',
           'first_1' => '4',
+          'bin' => '420000',
           'token' => '7ba647e7013b5cb9df39f17c375783aef81bc8c20f221b962becbd0686cc33af',
           'exp_month' => 1,
           'exp_year' => 2020
@@ -56,11 +57,11 @@ describe BeGateway::Client do
         end
       end
 
-      context 'update by token' do
-        before { allow(client).to receive(:put).with(any_args).and_return(successful_response) }
+      context 'query by token' do
+        before { allow(client).to receive(:get).with(any_args).and_return(successful_response) }
 
         it 'returns credit_card information' do
-          response = client.v2_update_card_by_token(token, request_params)
+          response = client.v2_get_card_by_token(token)
           expect(response.holder).to eq ('John Doe')
           expect(response.token).to eq ('7ba647e7013b5cb9df39f17c375783aef81bc8c20f221b962becbd0686cc33af')
         end
