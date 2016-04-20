@@ -22,13 +22,11 @@ describe BeGateway::Client do
       let(:client) { described_class.new(params) }
       let(:request_params) do
         {
-          'request' => {
-            'number' => 4200000000000000,
-            'holder' => "John Smith",
-            'exp_month' => 05,
-            'exp_year' => 2019,
-            'public_key' => 'public_key'
-          }
+          'number' => 4200000000000000,
+          'holder' => "John Smith",
+          'exp_month' => 05,
+          'exp_year' => 2019,
+          'public_key' => 'public_key'
         }
       end
       let(:response_body) do
