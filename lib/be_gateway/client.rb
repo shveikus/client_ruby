@@ -60,6 +60,11 @@ module BeGateway
       send_request('post', path, request: params)
     end
 
+    def credit_card_charge(params)
+      path = 'services/credit_cards/charges'
+      send_request('post', path, request: params)
+    end
+
     private
 
     def action_url(tr_type)

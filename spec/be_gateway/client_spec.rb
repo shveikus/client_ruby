@@ -313,6 +313,15 @@ describe BeGateway::Client do
         end
       end
 
+      describe '#authorization' do
+        it 'sends charge request' do
+          response = client.credit_card_charge(request_params)
+
+          expect(response.transaction['type']).to eq('authorization')
+          expect(response.transaction['authorization']['auth_code']).to eq('654321')
+        end
+      end
+
       describe '#p2p' do
         context 'when response is successful' do
           before do
